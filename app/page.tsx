@@ -1,6 +1,25 @@
+const { Client } = require('@notionhq/client')
 import { Navigation } from '@/components/Navigation/Navigation'
 
-export default function Home() {
+export default async function Home() {
+  const notion = new Client({ auth: process.env.NOTION_INTEGRATION_TOKEN })
+  const databaseId = process.env.NOTION_DATABASE_ID
+  const response = await notion.databases.query({
+    database_id: databaseId,
+    filter: {
+      property: 'ready_for_post',
+      checkbox: {
+        equals: true,
+      },
+    },
+    sorts: [
+      {
+        property: 'post_date',
+        direction: 'descending',
+      },
+    ],
+  })
+
   return (
     <>
       <Navigation />
@@ -13,18 +32,15 @@ export default function Home() {
       </div>
 
       <ul>
-        <li>
-          {/* <img /> */}
-
-          <div>
-            <span>글의 제목</span>
-            <p>
-              글의 내용입니다. 글의 내용은 길어질 수 있습니다. 내용이 길어질
-              경우에는 단어가 끊기지 않도록 단어 단위로 줄바꿈이 됩니다.
-            </p>
-            <span>2024.04.28</span>
-          </div>
-        </li>
+        {response.results.map((database: any) => (
+          <li key={database.id}>
+            <div>
+              <span>{database.properties.title.title[0].plain_text}</span>
+              <p>{database.properties.description.rich_text[0].plain_text}</p>
+              <span>{database.properties.post_date.date.start}</span>
+            </div>
+          </li>
+        ))}
       </ul>
     </>
   )
