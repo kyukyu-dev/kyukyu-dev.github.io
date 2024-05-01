@@ -14,7 +14,7 @@ export default function Home() {
 
       <ul>
         <li>
-          <img />
+          {/* <img /> */}
 
           <div>
             <span>글의 제목</span>
