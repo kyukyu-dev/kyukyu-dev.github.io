@@ -1,8 +1,14 @@
+import createMDX from '@next/mdx'
+import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
+const withVanillExtract = createVanillaExtractPlugin()
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/2048-in-react',
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   output: 'export',
   reactStrictMode: true,
 }
 
-export default nextConfig
+const withMDX = createMDX({})
+
+export default withVanillExtract(withMDX(nextConfig))
