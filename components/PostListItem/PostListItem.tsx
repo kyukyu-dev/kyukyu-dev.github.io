@@ -14,6 +14,7 @@ interface PostListItemProps {
   title: string
   description: string
   postDate: string
+  postId: string
 }
 
 export function PostListItem({
@@ -21,10 +22,11 @@ export function PostListItem({
   title,
   description,
   postDate,
+  postId,
 }: PostListItemProps) {
   return (
     <li className={postListItem}>
-      <Link href="/post" className={postListItemLink}>
+      <Link href={`/post/${postId}`} className={postListItemLink}>
         <Image
           src={thumbnailUrl}
           alt="포스팅 이미지"

@@ -50,6 +50,7 @@ export default async function Home() {
                 /-/gi,
                 '. '
               )}
+              postId={database.id}
             />
           ))}
         </ul>
