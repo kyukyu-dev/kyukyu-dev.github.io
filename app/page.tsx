@@ -1,29 +1,13 @@
-const { Client } = require('@notionhq/client')
 import { Navigation } from '@/components/Navigation/Navigation'
 import { PostListItem } from '@/components/PostListItem/PostListItem'
 import { tagDropdownTrigger, content, header, postList } from './styles.css'
 
 import dropDownArrow from '@/public/icons/arrow_drop_down.svg'
 import Image from 'next/image'
+import { getPostDatabase } from '@/notionApi/getPostDatabase'
 
 export default async function Home() {
-  const notion = new Client({ auth: process.env.NOTION_INTEGRATION_TOKEN })
-  const databaseId = process.env.NOTION_DATABASE_ID
-  const response = await notion.databases.query({
-    database_id: databaseId,
-    filter: {
-      property: 'ready_for_post',
-      checkbox: {
-        equals: true,
-      },
-    },
-    sorts: [
-      {
-        property: 'post_date',
-        direction: 'descending',
-      },
-    ],
-  })
+  const response = await getPostDatabase()
 
   return (
     <>

@@ -1,3 +1,4 @@
+import { getPostDatabase } from '@/notionApi/getPostDatabase'
 import { Client } from '@notionhq/client'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { NotionToMarkdown } from 'notion-to-md'
@@ -20,28 +21,7 @@ export default async function PostPage({
 }
 
 export async function generateStaticParams() {
-  const notion = new Client({ auth: process.env.NOTION_INTEGRATION_TOKEN })
-  const databaseId = process.env.NOTION_DATABASE_ID
-
-  if (databaseId === undefined) {
-    throw new Error('not valid notion database id')
-  }
-
-  const response = await notion.databases.query({
-    database_id: databaseId,
-    filter: {
-      property: 'ready_for_post',
-      checkbox: {
-        equals: true,
-      },
-    },
-    sorts: [
-      {
-        property: 'post_date',
-        direction: 'descending',
-      },
-    ],
-  })
+  const response = await getPostDatabase()
 
   return response.results.map(({ id }) => {
     return {
