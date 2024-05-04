@@ -27,6 +27,8 @@ export const titleStyle = style({
   color: '#333D4B',
   fontWeight: 700,
   marginBottom: 14,
+  wordBreak: 'keep-all',
+  overflowWrap: 'break-word',
 })
 
 export const descriptionStyle = style({
@@ -37,6 +39,8 @@ export const descriptionStyle = style({
   padding: 0,
   margin: 0,
   marginBottom: 12,
+  wordBreak: 'keep-all',
+  overflowWrap: 'break-word',
 })
 
 export const postDateStyle = style({

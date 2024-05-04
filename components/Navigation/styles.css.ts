@@ -19,6 +19,8 @@ export const navTitleContainer = style({
   display: 'flex',
   alignItems: 'center',
   height: '100%',
+  cursor: 'pointer',
+  textDecoration: 'none',
 })
 
 export const logoEmoji = style({
@@ -32,6 +34,7 @@ export const title = style({
   lineHeight: 1.5,
   color: '#333D4B',
   fontWeight: 400,
+  margin: 0,
 })
 
 export const bold = style({

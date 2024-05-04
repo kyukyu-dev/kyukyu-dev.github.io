@@ -25,7 +25,11 @@ export default async function Home() {
           {response.results.map((database: any) => (
             <PostListItem
               key={database.id}
-              thumbnailUrl={database.properties.thumbnail.files[0].file.url}
+              coverUrl={
+                database.cover.type === 'file'
+                  ? database.cover.file.url
+                  : database.cover.external.url
+              }
               title={database.properties.title.title[0].plain_text}
               description={
                 database.properties.description.rich_text[0].plain_text

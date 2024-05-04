@@ -10,7 +10,7 @@ import {
 import Link from 'next/link'
 
 interface PostListItemProps {
-  thumbnailUrl: string
+  coverUrl: string
   title: string
   description: string
   postDate: string
@@ -18,7 +18,7 @@ interface PostListItemProps {
 }
 
 export function PostListItem({
-  thumbnailUrl,
+  coverUrl,
   title,
   description,
   postDate,
@@ -28,7 +28,7 @@ export function PostListItem({
     <li className={postListItem}>
       <Link href={`/post/${postId}`} className={postListItemLink}>
         <Image
-          src={thumbnailUrl}
+          src={coverUrl}
           alt="포스팅 이미지"
           width={240}
           height={240}

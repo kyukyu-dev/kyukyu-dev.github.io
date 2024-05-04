@@ -20,12 +20,12 @@ export function Navigation() {
   return (
     <nav className={container}>
       <div className={content}>
-        <div className={navTitleContainer}>
+        <Link href="/" className={navTitleContainer}>
           <span className={logoEmoji}>👾</span>
-          <span className={title}>
+          <h1 className={title}>
             <span className={bold}>Kyukyu</span> Blog
-          </span>
-        </div>
+          </h1>
+        </Link>
 
         <ul className={navControlList}>
           <li className={navControlListItem}>
