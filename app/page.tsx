@@ -3,6 +3,9 @@ import { Navigation } from '@/components/Navigation/Navigation'
 import { PostListItem } from '@/components/PostListItem/PostListItem'
 import { tagDropdownTrigger, content, header, postList } from './styles.css'
 
+import dropDownArrow from '@/public/icons/arrow_drop_down.svg'
+import Image from 'next/image'
+
 export default async function Home() {
   const notion = new Client({ auth: process.env.NOTION_INTEGRATION_TOKEN })
   const databaseId = process.env.NOTION_DATABASE_ID
@@ -28,7 +31,10 @@ export default async function Home() {
 
       <div className={content}>
         <div className={header}>
-          <button className={tagDropdownTrigger}>카테고리</button>
+          <button className={tagDropdownTrigger}>
+            전체
+            <Image src={dropDownArrow} alt="화살표" />
+          </button>
         </div>
 
         <ul className={postList}>
