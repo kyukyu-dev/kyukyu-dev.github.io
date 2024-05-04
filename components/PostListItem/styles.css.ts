@@ -2,14 +2,18 @@ import { style } from '@vanilla-extract/css'
 
 export const postListItem = style({
   listStyle: 'none',
-  display: 'flex',
-  alignItems: 'center',
 
   selectors: {
     '& + &': {
       marginTop: 80,
     },
   },
+})
+
+export const postListItemLink = style({
+  display: 'flex',
+  alignItems: 'center',
+  textDecoration: 'none',
 })
 
 export const textContainer = style({
