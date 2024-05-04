@@ -15,6 +15,18 @@ export const content = style({
   height: '100%',
 })
 
+export const navTitleContainer = style({
+  display: 'flex',
+  alignItems: 'center',
+  height: '100%',
+})
+
+export const logoEmoji = style({
+  fontSize: 24,
+  lineHeight: 1.5,
+  marginRight: 4,
+})
+
 export const title = style({
   fontSize: 16,
   lineHeight: 1.5,

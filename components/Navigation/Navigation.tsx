@@ -6,8 +6,10 @@ import {
   container,
   content,
   iconButton,
+  logoEmoji,
   navControlList,
   navControlListItem,
+  navTitleContainer,
   title,
 } from './styles.css'
 
@@ -18,9 +20,12 @@ export function Navigation() {
   return (
     <nav className={container}>
       <div className={content}>
-        <span className={title}>
-          <span className={bold}>Kyukyu</span> Blog
-        </span>
+        <div className={navTitleContainer}>
+          <span className={logoEmoji}>👾</span>
+          <span className={title}>
+            <span className={bold}>Kyukyu</span> Blog
+          </span>
+        </div>
 
         <ul className={navControlList}>
           <li className={navControlListItem}>
