@@ -49,11 +49,12 @@ export const aboutLink = style({
   display: 'flex',
   alignItems: 'center',
   fontSize: 15,
-  height: 48,
   fontWeight: 500,
   color: '#6B7684',
   textDecoration: 'none',
   padding: '0 12px',
+  paddingTop: 16,
+  paddingBottom: 14,
   borderRadius: 8,
 })
 
