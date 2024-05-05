@@ -2,24 +2,10 @@ import { Navigation } from '@/components/Navigation/Navigation'
 import { getPostDatabase } from '@/notionApi/getPostDatabase'
 import { Client } from '@notionhq/client'
 import { GetPageResponse } from '@notionhq/client/build/src/api-endpoints'
-import { MDXRemote } from 'next-mdx-remote/rsc'
 import Image from 'next/image'
 import { NotionToMarkdown } from 'notion-to-md'
-import {
-  aStyle,
-  codeStyle,
-  container,
-  content,
-  coverImage,
-  h1Style,
-  h2Style,
-  h3Style,
-  imgStyle,
-  olStyle,
-  pStyle,
-  ulStyle,
-} from './styles.css'
-import { MDXComponents } from 'mdx/types'
+import { container, content, coverImage } from './styles.css'
+import { CustomMdxRemote } from '@/components/CustomMdxRemote/CustomMdxRemote'
 
 interface PageCoverType {
   cover: {
@@ -69,10 +55,7 @@ export default async function PostPage({
               fill
             />
 
-            <MDXRemote
-              source={markdown.parent}
-              components={{ ...components }}
-            />
+            <CustomMdxRemote source={markdown.parent} />
           </article>
         </div>
       </div>
@@ -89,36 +72,3 @@ export async function generateStaticParams() {
     }
   })
 }
-
-const components = {
-  h1: props => (
-    <h1 {...props} className={h1Style}>
-      {props.children}
-    </h1>
-  ),
-  h2: props => (
-    <h2 {...props} className={h2Style}>
-      {props.children}
-    </h2>
-  ),
-  h3: props => (
-    <h3 {...props} className={h3Style}>
-      {props.children}
-    </h3>
-  ),
-  p: props => (
-    <p {...props} className={pStyle}>
-      {props.children}
-    </p>
-  ),
-  a: props => (
-    <a {...props} target="_blank" className={aStyle}>
-      {props.children}
-    </a>
-  ),
-  // eslint-disable-next-line jsx-a11y/alt-text, @next/next/no-img-element
-  img: props => <img {...props} className={imgStyle} />,
-  code: props => <code {...props} className={codeStyle} />,
-  ol: props => <ol {...props} className={olStyle} />,
-  ul: props => <ul {...props} className={ulStyle} />,
-} as MDXComponents
