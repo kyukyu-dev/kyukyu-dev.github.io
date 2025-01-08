@@ -74,9 +74,10 @@ export const codeWrapperPreStyle = style({
 export const codeWrapper = style({
   padding: '16px 24px',
   display: 'block',
-  minHeight: 120,
+  minHeight: 48,
   tabSize: 4,
   borderRadius: 8,
+  whiteSpace: 'pre-wrap',
 })
 
 export const codeLanguageBox = style({
