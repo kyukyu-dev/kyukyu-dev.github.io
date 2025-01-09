@@ -77,7 +77,11 @@ export const codeWrapper = style({
   minHeight: 48,
   tabSize: 4,
   borderRadius: 8,
-  whiteSpace: 'pre-wrap',
+  overflowX: 'scroll',
+
+  '::-webkit-scrollbar-track': {
+    backgroundColor: 'transparent',
+  },
 })
 
 export const codeLanguageBox = style({
